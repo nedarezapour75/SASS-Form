@@ -1,0 +1,160 @@
+//variables
+$bg: #efefef;
+$margin: auto;
+$font-title: 26px;
+$font-text: 15px;
+$font-bold: 18px;
+$border-radius: 5px;
+$padding-bottom: 15px 0px 20px 0px;
+
+//mixin
+@mixin flex(
+  $flex: flex,
+  $justify-content: center,
+  $align-items: center,
+  $flex-direction: column
+) {
+  display: $flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $flex-direction;
+}
+//extend
+.input-style {
+  padding: 18px 29px 17px 18px;
+  width: 400px;
+  border-radius: 30px;
+  text-align: left;
+}
+.label-style {
+  position: absolute;
+  left: 123px;
+  top: 17px;
+}
+.before-after {
+  content: "";
+  display: block;
+  width: 172px;
+  height: 2px;
+  background: #dfdddd;
+  top: 50%;
+  position: absolute;
+}
+// @mixin position-absolute($top,$righ, $bottom, $left){
+//     top: $top;
+//     right:$right;
+//     bottom:$bottom;
+//     left: $left;
+// }
+//styles
+body {
+  background-color: $bg;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  direction: ltr;
+  text-align: left !important;
+}
+input {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+a{
+  color: black;
+}
+.container {
+  width: 450px;
+  margin: 100px auto;
+  background-color: white;
+  border-radius: $border-radius;
+  padding: 30px;
+
+  div.title {
+    padding: $padding-bottom;
+    p {
+      font-size: $font-title;
+      padding: $padding-bottom;
+    }
+    .user {
+      a {
+        color: rgb(4, 102, 230);
+        padding: 0px 0px 0px 5px;
+        font-size: $font-bold;
+      }
+      span {
+        font-size: $font-bold;
+      }
+    }
+  }
+  form {
+    @include flex();
+    .inputs {
+      margin: 10px;
+      input {
+        @extend .input-style;
+        background-color: #eff0f0;
+      }
+    }
+    .log {
+      padding: $padding-bottom;
+      width: 400px;
+      @include flex(flex, space-between, center, null);
+      a {
+        color: rgb(0, 68, 156);
+        font-size: $font-bold;
+      }
+      button {
+        background-color: rgb(53, 127, 239);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 30px;
+        border: none;
+        font-size: $font-text;
+      }
+    }
+    .sign1 {
+      @extend .input-style;
+      border: 2px solid #efefef;
+    }
+    .sign2 {
+      @extend .input-style;
+      border: 2px solid #efefef;
+    }
+    .sign3 {
+      @extend .input-style;
+      border: 2px solid #efefef;
+    }
+    .sign {
+      position: relative;
+      label {
+        @extend .label-style;
+        font-size: $font-bold;
+        i{
+          padding-right: 5px;
+          font-size: $font-bold;
+        }
+      }
+      margin: 10px;
+input{
+  transition: border .3s ease-in;
+  &:hover{
+    border: 2px solid rgb(53, 127, 239);
+          }
+}
+    }
+    .line {
+      position: relative;
+      font-size: $font-bold;
+    }
+    .line::before{
+        @extend .before-after;
+        left: 141%;
+    }
+    .line::after{
+        @extend .before-after;
+        right: 134%;
+    }
+  }
+}
+
